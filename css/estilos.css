@@ -1,0 +1,1705 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  background-color: #cfcfcf;
+  height: 100vh;
+}
+
+/*------------------------------------------------------------/Começo do SIDEBAR\------------------------------------------------------------*/
+
+:root {
+  --main-bg-color: #000;
+  --text-color: #fff;
+  --hover-color: #f1f1f1;
+}
+
+#closeIcon {
+  margin-left: 90%;
+  color: white;
+  font-size: 20px;
+}
+
+.menu-icon {
+  display: block;
+  /* Exibe o menu ícone por padrão */
+}
+
+
+/* Estilos principais para a sidebar */
+.sidebar_sidebar {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+  height: 100%;
+  width: 270px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2b2b2b;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 25px;
+  transition: width 0.3s;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar_sidebar.active .close-icon {
+  display: block;
+}
+
+/* Estilos da barra de rolagem para navegadores baseados em WebKit (Chrome, Safari, Edge) */
+.sidebar_sidebar::-webkit-scrollbar {
+  width: 8px;
+  /* Define a largura da barra de rolagem */
+}
+
+.sidebar_sidebar::-webkit-scrollbar-track {
+  background: #333;
+  /* Fundo da barra de rolagem */
+}
+
+.sidebar_sidebar::-webkit-scrollbar-thumb {
+  background-color: #555;
+  /* Cor da barra de rolagem */
+  border-radius: 10px;
+  /* Deixa a barra com cantos arredondados */
+  border: 2px solid #333;
+  /* Adiciona uma borda para melhor integração com o fundo */
+}
+
+.logo-container_sidebar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.logo_sidebar {
+  width: 180px;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Links de navegação */
+.sidebar_sidebar a {
+  padding: 12px 15px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  margin: 5px 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar_sidebar a:hover {
+  background-color: #505050;
+  transform: translateX(5px);
+}
+
+.menu-icon_sidebar {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  /* Transição suave para a rotação */
+}
+
+
+/* Botão sanduíche para dispositivos móveis */
+#menuToggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  font-size: 36px;
+  color: #ddd;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  background: #505050;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+/* Efeito do ícone "X" */
+#mySidebar.active~#menuToggle .menu-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+#mySidebar.active~#menuToggle .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+#mySidebar.active~#menuToggle .menu-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -8px);
+}
+
+#menuToggle {
+  display: block;
+}
+
+.sidebar_sidebar {
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar_sidebar.active {
+  width: 250px;
+}
+
+/* Responsivo para dispositivos móveis */
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+  }
+
+  .sidebar_sidebar {
+    width: 0;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .sidebar_sidebar.active {
+    width: 250px;
+  }
+}
+
+/* Dropdown estilizado */
+.dropdown_sidebar {
+  position: relative;
+}
+
+.dropdown-content_sidebar {
+  display: none;
+  position: relative;
+  background-color: #3b3b3b;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.dropdown-content_sidebar a {
+  color: #ddd;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content_sidebar a:hover {
+  background-color: #505050;
+}
+
+.show {
+  display: block;
+}
+
+/* Informações do usuário */
+.user-info_sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.user-photo_sidebar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid #505050;
+}
+
+.user-name_sidebar {
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+}
+
+/* Separador */
+.separator_sidebar {
+  width: 80%;
+  margin: 0 auto 20px;
+  border: 0;
+  border-top: 1px solid #505050;
+}
+
+/* Botão de sair */
+.botaosair {
+  display: flex;
+  align-items: center;
+  background: #ff4d4d;
+  font-family: inherit;
+  padding: 0.5em 1.2em;
+  font-weight: 500;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 50px;
+  justify-content: center;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.botaosair:hover {
+  background: #e43b3b;
+  transform: translateY(-2px);
+}
+
+.botaosair:active {
+  transform: translateY(1px);
+}
+
+.container_botaosair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#closeIcon {
+  cursor: pointer;
+}
+
+/*------------------------------------------------------------/Fim do SIDEBAR\------------------------------------------------------------*/
+
+
+/*----------------------------Cadastro Tipos Requisitos------------------------------*/
+.container_tipos_requisitos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+.ver_requisitos_cadastrados {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
+
+/*-------------------------------------Final Tipos Requisitos-------------------------------*/
+
+/*----------------------------------------Comeco Requisitos------------------------------------*/
+.container_requisitos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*--------------------------------------/Começo do Forms de Cadastro Global\--------------------------------------*/
+/* Formulário principal */
+.FormMotor {
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  width: 90%;
+  max-width: 500px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border: 1px solid #e5e7eb;
+}
+
+.edit-form {
+  flex-direction: column;
+  align-items: normal;
+  width: 90%;
+  max-width: 500px;
+  background-color: #f9fafb;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border: 1px solid #e5e7eb;
+  justify-content: center;
+}
+
+.formEditarRequisitos {
+  display: block;
+  flex-direction: column;
+  align-items: normal;
+  width: 90%;
+  max-width: 500px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border: 1px solid #e5e7eb;
+  justify-content: center;
+  margin-top: 100px;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  width: 600px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.4s, transform 0.3s;
+}
+
+/* Inputs de texto, email, data, etc. */
+
+form input[type="senha"],
+form input[type="number"],
+form input[type="password"],
+form input[type="text"],
+form input[type="date"],
+form input[type="email"] {
+  width: 80%;
+  padding: 8px 12px;
+  margin: 12px 0;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  color: #1f2937;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+/* Campo NIF oculto inicialmente */
+.nif-field {
+  display: none;
+  width: 90%;
+}
+
+/* Seletor estilizado */
+select {
+  appearance: none;
+  width: 80%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #1f2937;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10" width="14" height="10"%3E%3Cpath d="M1 1l6 6 6-6" fill="%23e21616"%3E%3C/path%3E%3C/svg%3E') no-repeat right 10px center;
+  background-size: 12px;
+}
+
+/* Botões */
+input[type="submit"],
+.option-button {
+  background-color: #e91227;
+  color: #ffffff;
+  padding: 12px 24px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.lista_funcionarios {
+  background-color: #e21616;
+  color: #ffffff;
+  padding: 12px 24px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.lista_requisitos {
+  background-color: #e21616;
+  color: #ffffff;
+  padding: 12px 24px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+
+  top: 100px;
+}
+
+input[type="submit"]:hover,
+.option-button:hover {
+  background-color: #fd2020;
+  ;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/*Ir Para Lista de Funcionario*/
+.lista_consulta {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 17px;
+  background-color: #e21616;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.lista_consulta:hover {
+  background-color: #fd2020;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Container de cadastro */
+.container-cadastro-turma,
+.container-cadastro-funcionario,
+.container-cadastro-aluno {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+/* Títulos */
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #1f2937;
+  letter-spacing: 1.5px;
+}
+
+/* Estilização para labels */
+label {
+  font-weight: bold;
+  color: #4b5563;
+  font-size: 0.9rem;
+  /* Aumenta a margem superior para afastar o elemento para baixo */
+}
+
+/* Inputs do tipo arquivo */
+input[type="file"] {
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 25px;
+  }
+
+  .lista_consulta {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .container-cadastro-turma,
+  .container-cadastro-funcionario,
+  .container-cadastro-aluno {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+/* Responsividade adicional para dispositivos muito pequenos */
+@media (max-width: 480px) {
+
+  .container-cadastro-turma,
+  .container-cadastro-funcionario,
+  .container-cadastro-aluno {
+    padding: 10px;
+  }
+
+  select,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"] {
+    width: 82%;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .option-button,
+  input[type="submit"] {
+    font-size: 0.85rem;
+  }
+}
+
+.BotaoMotor {
+  display: block;
+}
+
+/*--------------------------------------/Fim do Forms de Cadastro Global\--------------------------------------*/
+
+/*------------------------------/Estilos da Paginação\------------------------------*/
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination_btn {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 1rem;
+  color: #8B0000;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination_btn:hover {
+  background-color: #a50008;
+  color: #fff;
+}
+
+.pagination_btn.active {
+  background-color: #8B0000;
+  color: #fff;
+  font-weight: bold;
+  cursor: default;
+}
+
+/*------------------------------/Fim da Paginação\------------------------------*/
+
+/* ------------------------------/Estilo Geral da Tabela\------------------------------*/
+table {
+  width: 70px;
+  font-size: 14px;
+  border-collapse: collapse;
+  margin-top: 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 60%;
+}
+
+th {
+  padding: 5px;
+  background-color: #b30000;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 3px solid #8a0000;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  color: #333;
+  font-size: 0.95em;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+tr:hover td {
+  background-color: #ffdfdf;
+  color: #600000;
+}
+
+table {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+
+/*------------------------------/Estilos dos Logs\------------------------------ */
+
+.main_logs {
+  border-radius: 10px;
+  padding: 2rem;
+
+}
+
+.section_logs {
+  text-align: center;
+}
+
+.title_logs {
+  font-size: 2rem;
+  color: #8B0000;
+  margin-bottom: 2rem;
+}
+
+.table_logs {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.thead_logs {
+  background-color: #a50008;
+  color: #fff;
+}
+
+.tr_logs {
+  border-bottom: 1px solid #ddd;
+}
+
+.th_logs,
+.td_logs {
+  padding: 1rem;
+  font-size: 14px;
+  text-align: left;
+}
+
+.tbody_logs .tr_logs:nth-child(odd) {
+  background-color: #fff;
+}
+
+/*------------------------------/Fim dos Logs\------------------------------*/
+
+/*------------------------------/Começo da Paginação\------------------------------*/
+.filter_container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.filter_group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#filter_geral,
+#filter_detalhado {
+  width: 200px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/*------------------------------/Fim da Paginação\------------------------------*/
+
+
+
+/*-----Tabela Curso------*/
+.cursoTable {
+  width: 100%;
+  align-items: center;
+}
+
+.btn-inativar {
+  margin-right: 3px;
+}
+
+/*-----Fim Tabela Curso------*/
+
+/*-----Modal------*/
+.modal {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: white;
+}
+
+.modal.sucesso {
+  background-color: #4CAF50;
+}
+
+.modal.erro {
+  background-color: #f44336;
+}
+
+/*------------------------------------Fim Modal-----------------------------------------*/
+
+/*------------------------------/começo tabela manutencao\------------------------------*/
+
+.action-buttons a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-inativar,
+.btn-realizada {
+  background-color: #B22222;
+  padding: 8px 16px;
+  border: 1px solid black;
+}
+
+.btn-realizada {
+  background-color: #ff3535;
+  color: #fff;
+}
+
+.btn-inativar:hover,
+.btn-realizada:hover {
+  background-color: #c82333;
+}
+
+.btn-editar {
+  background-color: #B22222;
+  border: 1px solid black;
+}
+
+.btn-editar:hover {
+  background-color: #dc3545;
+}
+
+.btn-excluir {
+  background-color: #8B0000;
+  /* Um tom de vermelho escuro */
+  border: 1px solid black;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin: 0 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-excluir:hover {
+  background-color: #A52A2A;
+  /* Um tom mais claro ao passar o mouse */
+}
+
+.checkbox_manu {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #bbb;
+  border-radius: 25%;
+  cursor: pointer;
+  position: relative;
+  background-color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkbox_manu:checked {
+  background-color: #ff3535;
+  border-color: #ff3535;
+}
+
+.checkbox_manu:checked::after {
+  content: '✔';
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 1px;
+  left: 5px;
+}
+
+.box-check_manu {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.box-text_manu {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.sub-container_manu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  padding: 5px;
+}
+
+.text_manu {
+  width: 100%;
+  border: 1px solid #ff3535;
+  border-radius: 5px;
+  resize: none;
+  overflow: hidden;
+  padding: 3px;
+  font-weight: bolder;
+  margin-top: 10px;
+}
+
+.form-button_manu {
+  background-color: #e21616;
+  color: #ffffff;
+  padding: 12px 24px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.date_manu {
+  width: 90%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  color: #1f2937;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.box-edit_manu {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+}
+
+.pesquisa_manu {
+  padding: 10px;
+  border: 1px solid #ff3535;
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+/*------------------------------/Fim da Página de Manutenção\------------------------------*/
+
+/*------------------------------/Estilo da Página de Documentação\------------------------------*/
+
+
+.link-documentacao {
+  color: #fff;
+}
+
+/* Cabeçalho */
+header.cabecalho {
+  background-color: #e21616;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  border: 3px solid black;
+  /* Adicionando borda preta */
+}
+
+
+/* Conteúdo */
+.conteudo {
+  width: 100%;
+  /* Ocupa toda a largura do main */
+  margin: 10px 0;
+  /* Espaçamento vertical reduzido */
+  align-items: center;
+  text-align: center;
+}
+
+.conteudo h2 {
+  color: #333;
+  line-height: 2;
+}
+
+.lista {
+  list-style-type: disc;
+  margin-left: 20px;
+  list-style: none;
+  line-height: 1.5;
+  margin-top: -20px;
+}
+
+/* Aside */
+.secao-documentacao {
+  background-color: #e21616;
+  padding: 5px;
+  border-radius: 3px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  border: 2px solid black;
+  /* Adicionando borda preta */
+  color: #a50008;
+}
+
+
+.link-documentacao {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.botao-documentacao {
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+  /* Adicionando borda preta */
+}
+
+*/ .botao-documentacao:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .principal {
+    margin-top: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .conteudo,
+  .secao-documentacao {
+    margin: 10px;
+    /* Ajuste de margem para telas pequenas */
+  }
+}
+
+.sobrenr12 {
+  color: #000;
+  margin-top: -20px;
+}
+
+
+
+/*------------------------------/Fim Estilo da Página de Documentação\------------------------------*/
+
+/*------------------------------/Começo Estilo da Checklsit de Segurança\------------------------------*/
+.body-check-seguranca {
+  font-family: Arial, sans-serif;
+  background-color: #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .body-check-seguranca {
+    padding: 40px;
+  }
+}
+
+/* Estilo para o botão de retorno */
+.boton-elegante {
+  padding: 10px 40px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.abrirModal {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+}
+
+
+/* Título */
+.checkSeguranca {
+  margin-top: 20px;
+  color: #B22222;
+  text-align: start;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Estilo para o botão de abrir o modal */
+#openModal {
+  background-color: #B22222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#openModal:hover {
+  background-color: #8B0000;
+}
+
+/* Configuração do modal */
+.modalCheckSeguranca {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content-seguranca {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botão de fechamento do modal */
+.close {
+  color: #aaa;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #B22222;
+}
+
+/* Estilo do título e do texto no modal */
+.modal-content-seguranca h2,
+.modal-content-seguranca h3 {
+  color: #B22222;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.modal-content-seguranca p {
+  font-size: 16px;
+  color: #333;
+  margin: 8px 0;
+}
+
+/* Campo de texto e área de seleção */
+.modal-content-seguranca textarea {
+  width: 70%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: none;
+}
+
+/* Botão de envio no modal */
+#btnRegistrar {
+  background-color: #B22222;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#btnRegistrar:hover {
+  background-color: #8B0000;
+}
+
+.colaboradorModal {
+  font-weight: bold;
+}
+
+.selectColaboradorModal {
+  margin-top: 7px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23333" d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+}
+
+.selectColaboradorModal:hover {
+  border-color: #888;
+}
+
+.selectColaboradorModal:focus {
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.selectColaboradorModal option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+.container-botoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  #mainForm {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .checkbox {
+    align-items: center;
+    /* Deixa os checkboxes em linha no celular */
+    text-align: start;
+    gap: 10px;
+    /* Ajusta o espaçamento */
+    max-width: 100%;
+    justify-content: start;
+    /* Alinha à esquerda */
+  }
+
+  .checkbox-input {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    top: -50px;
+  }
+
+  .modal-content-seguranca {
+    width: 90%;
+    margin-left: 5%;
+    max-height: 80vh;
+    /* Ajuste de altura */
+  }
+}
+
+/* Botão de envio */
+#btnRegistrar {
+  background-color: #B22222;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#btnRegistrar:hover {
+  background-color: #8B0000;
+}
+
+@media (min-width: 1024px) {
+  #mainForm {
+    padding: 30px;
+    width: 700px;
+  }
+}
+
+@media (min-width: 800px) {
+  .modal-content-seguranca {
+    margin-left: 5%;
+  }
+
+  .close {
+    margin-right: 4%;
+    margin-top: 5px;
+  }
+}
+
+@media (min-width: 834px) {
+  .modal-content-seguranca {
+    margin-left: 5%;
+  }
+
+  .close {
+    margin-right: 7%;
+  }
+}
+
+@media (min-width: 1104px) {
+  .modal-content-seguranca {
+    margin-left: 31.2%;
+  }
+
+  .close {
+    display: none;
+  }
+}
+
+.titulochecks {
+  text-align: center;
+}
+
+/* Estilo do novo checkbox */
+.checkbox {
+  display: flex;
+
+}
+
+/* Estilos consistentes para todas as resoluções */
+.checkbox-input {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.checkbox:hover .checkbox-check {
+  background: #ff475425;
+}
+
+.checkbox-input {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.checkbox-input:checked+.checkbox-check {
+  background: #dc143c;
+  stroke-dashoffset: 0;
+}
+
+.required-checkbox {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.required-checkbox:checked+.checkbox-check {
+  background: #dc143c;
+  stroke-dashoffset: 0;
+}
+
+.checkbox-check {
+  border: 2px solid #dc143c;
+  stroke: #f9f9f9;
+  stroke-dasharray: 25;
+  stroke-dashoffset: 25;
+  stroke-linecap: round;
+  stroke-width: 0.2rem;
+  border-radius: 0.2rem;
+  fill: none;
+  transition: background 0.4s, stroke-dashoffset 0.6s;
+  width: 30px;
+  height: 25px;
+  padding: 12px;
+}
+
+.required-checkbox {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.required-checkbox:checked+.checkbox-check {
+  background: #dc143c;
+  stroke-dashoffset: 0;
+}
+
+.colaborador {
+  font-weight: bold;
+}
+
+.selectColaborador {
+  margin-top: 7px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23333" d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+}
+
+.selectColaborador:hover {
+  border-color: #888;
+}
+
+.selectColaborador:focus {
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.selectColaborador option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+.cadastrarhist {
+  background: #ff4d4d;
+  font-weight: 500;
+  padding: 10px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 25px;
+  justify-content: center;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.cadastrarhist:hover {
+  background: #e43b3b;
+  transform: translateY(-2px);
+}
+
+#formRegistro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+}
+
+/*------------------------------/Fim Estilo da Checklsit de Segurança\------------------------------*/
+
+
+/*------------------------------/Começo pagina de nao autorizado\------------------------------*/
+.acesso_negado {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Estilização do contêiner principal */
+.nao-autorizado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Estilização do título */
+.nao-autorizado h1 {
+  color: #d9534f;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Estilização do texto */
+.nao-autorizado p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Estilização do botão */
+.nao-autorizado button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nao-autorizado button:hover {
+  background-color: #c9302c;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  .nao-autorizado h1 {
+    font-size: 1.8rem;
+  }
+
+  .nao-autorizado p {
+    font-size: 0.9rem;
+  }
+
+  .nao-autorizado button {
+    font-size: 0.9rem;
+  }
+}
+
+/*------------------------------/Fim pagina de nao autorizado\------------------------------*/
+
+.TabelaErro {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/*------------------------------/Começo pagina de verifica colaborador\------------------------------*/
+.verificar-colaborador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #cfcfcf;
+  color: #333;
+}
+
+.container-verif-colab {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+}
+
+.titulo-verif-colab {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.message {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #d9534f;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #c9302c;
+}
+
+/*------------------------------/Fim pagina de verifica colaborador\------------------------------*/
+
+#TipoMaquina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin: 50px auto;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.4s, transform 0.3s;
+  padding: 25px;
+}
+
+/*------------------------------/Modal Toast de Segurança e Operacional\------------------------------*/
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #4CAF50;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilo do Toast */
+.toastRequire {
+  visibility: hidden;
+  min-width: 250px;
+  margin: 0 auto;
+  background-color: #f44336;
+  /* Cor de fundo vermelha para erro */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 17px;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+/* Exibir o Toast */
+.toastRequire.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*------------------------------/Fim Modal Toast de Segurança e Operacional\------------------------------*/
+.BotaoAtivar,
+.BotaoDesativar,
+.BotaoExcluir,
+.BotaoMotor {
+  border: 1px solid black;
+  background-color: #b30000;
+  /* Cor para todos os botões */
+  color: white;
+  /* Cor do texto */
+  padding: 8px 12px;
+  /* Padding */
+  width: 100px;
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  font-weight: bold;
+  /* Texto em negrito */
+  text-decoration: none;
+  /* Sem sublinhado */
+  transition: background-color 0.3s;
+  /* Efeito de transição */
+
+}
+
+.BotaoAtivar:hover,
+.BotaoDesativar:hover,
+.BotaoExcluir:hover,
+.BotaoMotor:hover {
+  background-color: #a20000;
+  /* Tom mais escuro ao passar o mouse */
+
+}
+
+
+/*------------------------------/Formulario de Pesquisa (filtro)\------------------------------*/
+
+.search-form {
+  margin-bottom: 1.5rem;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0) !important;
+}
+
+#searchInput {
+  border: none;
+  width: 350px;
+  cursor: auto;
+
+
+}
+
+.requisitos-especificos ul {
+  list-style: none;
+}
