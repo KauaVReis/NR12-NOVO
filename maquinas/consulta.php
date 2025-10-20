@@ -4,8 +4,8 @@ include './atualizar_status_maquinas.php';
 
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php';
+// define('BASE_URL', '../../nr12/');
+include __DIR__ . '/../sidebar.php';
 
 // Incluindo a conexão com o banco de dados
 include '../conexao.php';

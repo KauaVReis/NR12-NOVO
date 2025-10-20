@@ -1,9 +1,9 @@
 <?php
 // Dados de conexão
-$host = '194.163.46.4';
-$dbname = 'u940152082_nr12novo2024';
-$username = 'u940152082_tds24senai';
-$password = 'S3n@!td$24f@ch!nn!';
+$host = 'localhost';
+$dbname = 'nr12';
+$username = 'root';
+$password = '';
 date_default_timezone_set('America/Sao_Paulo');
 
 

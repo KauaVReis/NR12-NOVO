@@ -2,12 +2,12 @@
 // Obtém o diretório base do servidor
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 ?>
 
 <?php
 require_once '../verifica_permissao.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php';
+include __DIR__ . '/../sidebar.php';
 include '../conexao.php';
 
 verificaPermissao(['Adm', 'Coordenador']);

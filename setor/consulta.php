@@ -1,9 +1,9 @@
 <?php
 // Configuração da URL base do projeto
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 
 // Inclui a barra lateral e a conexão com o banco de dados
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php';
+include __DIR__ . '/../sidebar.php';
 include '../conexao.php';
 
 try {

@@ -3,10 +3,10 @@ session_start();
 require_once '../verifica_permissao.php';
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 
 include '../conexao.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php';
+include __DIR__ . '/../sidebar.php';
 
 if (isset($_GET['id']) && isset($_GET['acao']) && $_GET['acao'] == 'Realizada') {
     $idmanutencao = $_GET['id'];

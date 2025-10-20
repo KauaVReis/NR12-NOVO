@@ -2,7 +2,7 @@
 // Obtém o diretório base do servidor
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 
 $cadastroSucesso = false; // Variável para indicar se o cadastro foi bem-sucedido
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php'; ?>
+<?php include __DIR__ . '/../sidebar.php'; ?>
 <style>
 
 body{

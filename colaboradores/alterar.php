@@ -3,9 +3,10 @@ include '../conexao.php'; // Verifique se o caminho está correto
 
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php';
+
+include __DIR__ . '/../sidebar.php';
 
 require_once '../verifica_permissao.php';
 verificaPermissao(permissoesPermitidas: ['Adm']);

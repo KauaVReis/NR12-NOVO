@@ -11,7 +11,8 @@ verificaPermissao(['Adm', 'Coordenador']);
 // Obtém o diretório base do servidor
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
+
 
 if (isset($_SESSION['mensagem'])) {
     $mensagem = $_SESSION['mensagem'];
@@ -19,7 +20,7 @@ if (isset($_SESSION['mensagem'])) {
     unset($_SESSION['mensagem'], $_SESSION['mensagem_tipo']);
 }
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php'; ?>
+<?php include __DIR__ . '/../sidebar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

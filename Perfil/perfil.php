@@ -6,9 +6,9 @@ $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
 
 // Corrige a URL para sempre começar do diretório raiz do projeto
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/nr12/sidebar.php'; ?>
+<?php include __DIR__ . '/../sidebar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

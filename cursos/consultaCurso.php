@@ -2,7 +2,8 @@
 // Configuração do diretório base
 $base_dir = dirname($_SERVER['SCRIPT_NAME']);
 $base_dir = rtrim($base_dir, '/') . '/';
-define('BASE_URL', '../../nr12/');
+// define('BASE_URL', '../../nr12/');
+
 
 include '../conexao.php';
 include '../sidebar.php';
