@@ -183,8 +183,8 @@ $pdo = null;
         </form>
 
         <div class="Pdf-ajuda">
-            <a href="/nr12/ajuda/CADASTRAR MOTOR.pdf" target="_blank">Está com dificuldade de cadastrar um Motor? Clique aqui.</a><br>
-            <a href="/nr12/ajuda/ALTERAÇÃO DE MOTOR.pdf" target="_blank">Cadastrou algum motor errado e precisa fazer alguma alteração? Clique aqui</a>
+            <a href="../ajuda/CADASTRAR MOTOR.pdf" target="_blank">Está com dificuldade de cadastrar um Motor? Clique aqui.</a><br>
+            <a href="../ajuda/ALTERAÇÃO DE MOTOR.pdf" target="_blank">Cadastrou algum motor errado e precisa fazer alguma alteração? Clique aqui</a>
         </div>
     </div>
 

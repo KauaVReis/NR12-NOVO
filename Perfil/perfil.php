@@ -31,7 +31,7 @@ $base_dir = rtrim($base_dir, '/') . '/';
       </div>
     </div>
     <div class="perfil-opcoes">
-      <a class="perfil-btn-sair" href="../../nr12/logout.php">Sair</a>
+      <a class="perfil-btn-sair" href="../logout.php">Sair</a>
     </div>
   </div>
 

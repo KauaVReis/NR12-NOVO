@@ -288,9 +288,9 @@ if (isset($_SESSION['mensagem'])) {
     </div>
 
     <div class="Pdf-ajuda">
-        <a href="/nr12/ajuda/CADASTRO DE FUNCIONÁRIO.pdf" target="_blank">Está com dificuldade de cadastrar um
+        <a href="../ajuda/CADASTRO DE FUNCIONÁRIO.pdf" target="_blank">Está com dificuldade de cadastrar um
             funcionário? Clique aqui.</a><br>
-        <a href="/nr12/ajuda/ALTERAÇÃO DE FUNCIONÁRIO.pdf" target="_blank">Cadastrou algum funcionário errado e
+        <a href="../ajuda/ALTERAÇÃO DE FUNCIONÁRIO.pdf" target="_blank">Cadastrou algum funcionário errado e
             precisa fazer alguma alteração? Clique aqui</a>
     </div>
 

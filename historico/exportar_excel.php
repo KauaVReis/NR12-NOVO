@@ -1,7 +1,7 @@
 <?php
 // Inclua as configurações e conexões necessárias
 include "../conexao.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . '/nr12/vendor/autoload.php'; // Certifique-se de ajustar o caminho corretamente
+require_once  __DIR__ . '/../vendor/autoload.php'; // Certifique-se de ajustar o caminho corretamente
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;

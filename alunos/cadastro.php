@@ -367,11 +367,11 @@ try {
     </div>
 
     <div class="Pdf-ajuda">
-        <a id="ajudaLinkIndividual" href="/nr12/ajuda/CADASTRO DE ALUNOS.pdf" target="_blank">Está com dificuldade de
+        <a id="ajudaLinkIndividual" href="../ajuda/CADASTRO DE ALUNOS.pdf" target="_blank">Está com dificuldade de
             cadastrar um aluno? Clique aqui.</a>
-        <a id="ajudaLinkLote" href="/nr12/ajuda/CADASTRO DE ALUNOS EM LOTE.pdf" target="_blank"
+        <a id="ajudaLinkLote" href="../ajuda/CADASTRO DE ALUNOS EM LOTE.pdf" target="_blank"
             style="display: none;">Está com dificuldade de cadastrar alunos em lote? Clique aqui.</a>
-        <a href="/nr12/ajuda/ALTERAÇÃO DE ALUNO.pdf" target="_blank">Cadastrou algum aluno errado e precisa fazer
+        <a href="../ajuda/ALTERAÇÃO DE ALUNO.pdf" target="_blank">Cadastrou algum aluno errado e precisa fazer
             alguma alteração? Clique aqui</a>
     </div>
 

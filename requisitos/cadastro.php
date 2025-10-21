@@ -177,9 +177,9 @@ ob_end_flush(); // Libera a saída buffered
     </div>
 
     <div class="Pdf-ajuda">
-        <a href="/nr12/ajuda/CADASTRO DE REQUISITOS.pdf" target="_blank">Está com dificuldade de cadastrar um
+        <a href="../ajuda/CADASTRO DE REQUISITOS.pdf" target="_blank">Está com dificuldade de cadastrar um
             requisito? Clique aqui.</a><br>
-        <a href="/nr12/ajuda/ALTERAÇÃO DE REQUISITOS.pdf" target="_blank">Cadastrou algum requisito errado e
+        <a href="../ajuda/ALTERAÇÃO DE REQUISITOS.pdf" target="_blank">Cadastrou algum requisito errado e
             precisa fazer alguma alteração? Clique aqui</a>
     </div>
 

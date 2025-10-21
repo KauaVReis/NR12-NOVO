@@ -220,9 +220,9 @@ $pdo = null;
         </form>
 
         <div class="Pdf-ajuda">
-            <a href="/nr12/ajuda/setor.pdf" target="_blank">Está com dificuldade de cadastrar um
+            <a href="../ajuda/setor.pdf" target="_blank">Está com dificuldade de cadastrar um
                 Setor? Clique aqui.</a><br>
-            <a href="/nr12/ajuda/ALTERAÇÃO DE SETOR.pdf" target="_blank">Cadastrou algum Setor errado e
+            <a href="../ajuda/ALTERAÇÃO DE SETOR.pdf" target="_blank">Cadastrou algum Setor errado e
                 precisa fazer alguma alteração? Clique aqui</a>
         </div>
     </div>

@@ -29,7 +29,7 @@ try {
         // Verifica se o arquivo Excel foi enviado e processa o upload
         if (isset($_FILES['excel_apoio']) && $_FILES['excel_apoio']['error'] == UPLOAD_ERR_OK) {
             $excelFile = $_FILES['excel_apoio'];
-            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/nr12/uploads/'; // Define o diretório de upload
+            $uploadDir = __DIR__ . '/../uploads/'; // Define o diretório de upload
             $arquivoPath = $uploadDir . basename($excelFile['name']);
 
             // Verifica se o arquivo tem extensão .xlsx ou .xls
@@ -37,7 +37,7 @@ try {
             if ($extensao === 'xlsx' || $extensao === 'xls') {
                 // Move o arquivo para o diretório de upload
                 if (move_uploaded_file($excelFile['tmp_name'], $arquivoPath)) {
-                    $arquivoPath = '/nr12/uploads/' . basename($excelFile['name']); // Caminho relativo para salvar no banco
+                    $arquivoPath = '/../uploads/' . basename($excelFile['name']); // Caminho relativo para salvar no banco
                 } else {
                     $modalMessage = "Erro ao fazer upload do arquivo Excel.";
                 }

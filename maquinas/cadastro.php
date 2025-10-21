@@ -549,9 +549,9 @@ function inserirRequisitosEspecificos($pdo, $maquina_id, $requisitosAdicionais)
         </div>
 
         <div class="Pdf-ajuda">
-            <a href="/nr12/ajuda/CADASTRO DE MÁQUINA.pdf" target="_blank">Está com dificuldade de cadastrar uma
+            <a href="../ajuda/CADASTRO DE MÁQUINA.pdf" target="_blank">Está com dificuldade de cadastrar uma
                 Máquina? Clique aqui.</a><br>
-            <a href="/nr12/ajuda/ALTERAÇÃO DE MÁQUINAS.pdf" target="_blank">Cadastrou alguma máquina errada e
+            <a href="../ajuda/ALTERAÇÃO DE MÁQUINAS.pdf" target="_blank">Cadastrou alguma máquina errada e
                 precisa fazer alguma alteração? Clique aqui</a>
         </div>
     </div>

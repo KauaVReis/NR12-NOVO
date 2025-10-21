@@ -209,9 +209,9 @@ $pdo = null;
         </div>
 
         <div class="Pdf-ajuda">
-            <a href="/nr12/ajuda/CADASTRO DE UNIDADE.pdf" target="_blank">Está com dificuldade de cadastrar uma
+            <a href="../ajuda/CADASTRO DE UNIDADE.pdf" target="_blank">Está com dificuldade de cadastrar uma
                 unidade? Clique aqui.</a><br>
-            <a href="/nr12/ajuda/ALTERAÇÃO DE UNIDADE.pdf" target="_blank">Cadastrou alguma unidade errada e
+            <a href="../ajuda/ALTERAÇÃO DE UNIDADE.pdf" target="_blank">Cadastrou alguma unidade errada e
                 precisa fazer alguma alteração? Clique aqui</a>
         </div>
     </div>

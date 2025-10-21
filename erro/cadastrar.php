@@ -6,7 +6,7 @@ $base_dir = rtrim($base_dir, '/') . '/';
 
 // Inclui dependências
 include __DIR__ . '/../sidebar.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/nr12/conexao.php';
+include __DIR__ . '/../conexao.php';
 require_once '../verifica_permissao.php';
 verificaPermissao(['Adm', 'Coordenador', 'Professor']);
 

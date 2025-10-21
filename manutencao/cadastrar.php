@@ -325,7 +325,7 @@ label[for="descricao"] {
     </form>
 
     <div class="Pdf-ajuda">
-      <a href="/nr12/ajuda/CADASTRAR MANUTENÇÃO.pdf" target="_blank">Está com dificuldade de cadastrar uma Manutenção?
+      <a href="../ajuda/CADASTRAR MANUTENÇÃO.pdf" target="_blank">Está com dificuldade de cadastrar uma Manutenção?
         Clique aqui.</a>
     </div>
   </div>

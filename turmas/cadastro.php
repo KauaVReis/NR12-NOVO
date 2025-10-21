@@ -218,9 +218,9 @@ verificaPermissao(['Adm', 'Coordenador', 'Professor']);
     </div>
 
     <div class="Pdf-ajuda">
-        <a id="" href="/nr12/ajuda/CADASTRO DE TURMA.pdf" target="_blank">Está com dificuldade de
+        <a id="" href="../ajuda/CADASTRO DE TURMA.pdf" target="_blank">Está com dificuldade de
             cadastrar uma turma? Clique aqui.</a>
-        <a href="/nr12/ajuda/ALTERAÇÃO DE TURMA.pdf" target="_blank">Cadastrou alguma turma errada e precisa fazer
+        <a href="../ajuda/ALTERAÇÃO DE TURMA.pdf" target="_blank">Cadastrou alguma turma errada e precisa fazer
             alguma alteração? Clique aqui</a>
     </div>
 

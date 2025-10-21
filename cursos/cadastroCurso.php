@@ -106,9 +106,9 @@ $base_dir = rtrim($base_dir, '/') . '/';
     </div>
 
     <div class="Pdf-ajuda">
-        <a href="/nr12/ajuda/CADASTRO DE CURSO.pdf" target="_blank">Está com dificuldade de cadastrar um
+        <a href="../ajuda/CADASTRO DE CURSO.pdf" target="_blank">Está com dificuldade de cadastrar um
             curso? Clique aqui.</a><br>
-        <a href="/nr12/ajuda/ALTERAÇÃO DE CURSO.pdf" target="_blank">Cadastrou algum curso errado e
+        <a href="../ajuda/ALTERAÇÃO DE CURSO.pdf" target="_blank">Cadastrou algum curso errado e
             precisa fazer alguma alteração? Clique aqui</a>
     </div>
 
