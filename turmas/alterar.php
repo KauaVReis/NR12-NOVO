@@ -191,7 +191,7 @@ $colaboradores = $pdo->query($sqlcolaboradores)->fetchAll(PDO::FETCH_ASSOC);
                     toast.classList.add('show', type);
                     setTimeout(() => {
                         toast.classList.remove('show', type);
-                        window.location.href = "http://localhost/nr12/turmas/consulta.php";
+                        window.location.href = "consulta.php";
                     }, 3000);
                 }
 

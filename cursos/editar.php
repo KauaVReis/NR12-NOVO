@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['tipo_mensagem'] = "erro";
     }
 
-    header("Location: http://localhost/nr12/cursos/consultaCurso.php");
+            header("Location: consultaCurso.php");
     exit();
 }
 ?>

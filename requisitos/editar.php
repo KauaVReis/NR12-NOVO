@@ -179,7 +179,7 @@ try {
                 toast.classList.remove('show', type);
                 toast.style.display = 'none'; // Esconde o toast após a exibição
                 // Redireciona após o tempo do toast
-                window.location.href = "http://localhost/nr12/requisitos/consultar.php";
+                window.location.href = "consultar.php";
             }, 3000);
         }
 
