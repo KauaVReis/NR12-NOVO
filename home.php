@@ -1,3 +1,30 @@
+<?php
+// PRIMEIRO: Verifica se é uma requisição AJAX para atualizar notificações
+if (isset($_GET['atualizar_notificacoes'])) {
+    // Inclui a conexão apenas se precisar recalcular $totalNotificacoes
+    include './conexao.php'; 
+    $dataAtual = date('Y-m-d');
+
+    // Recalcula $totalNotificacoes (copie a lógica de consulta daqui)
+    $queryProximas = $pdo->prepare("SELECT COUNT(*) FROM maquina WHERE DATEDIFF(data_proxima_manutencao, :dataAtual) <= 10 AND DATEDIFF(data_proxima_manutencao, :dataAtual) >= 0");
+    $queryProximas->execute(['dataAtual' => $dataAtual]);
+    $countProximas = $queryProximas->fetchColumn();
+
+    $queryVencidas = $pdo->prepare("SELECT COUNT(*) FROM maquina WHERE data_proxima_manutencao < :dataAtual");
+    $queryVencidas->execute(['dataAtual' => $dataAtual]);
+    $countVencidas = $queryVencidas->fetchColumn();
+
+    $totalNotificacoes = $countProximas + $countVencidas;
+    
+    // Define o cabeçalho como JSON e envia a resposta
+    header('Content-Type: application/json');
+    echo json_encode(['totalNotificacoes' => $totalNotificacoes]);
+    exit; // Para a execução do script aqui, NÃO gera o HTML abaixo
+}
+// SE NÃO FOR A REQUISIÇÃO AJAX, o script continua normalmente para gerar a página HTML...
+// Aqui começa o código original da sua home.php:
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -552,107 +579,154 @@ $totalNotificacoes = count($manutencoesProximas) + count($manutencoesVencidas);
 
 
 <style>
-  .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000; 
+}
 
-  .notification img {
-    display: block;
-    margin: 0 auto;
-  }
+.notification img {
+  display: block;
+  margin: 0 auto;
+  width: 50px; 
+}
 
-  .notification-badge {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #e74c3c;
-    /* Vermelho para chamar atenção */
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 50%;
-    padding: 5px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  }
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #e74c3c; /* Vermelho */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 5px 8px; /* Ajuste padding se necessário */
+  min-width: 10px; /* Largura mínima para manter a forma */
+  height: 18px; /* Altura fixa */
+  line-height: 18px; /* Centraliza verticalmente o texto */
+  text-align: center; /* Centraliza horizontalmente o texto */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex; /* Usado para centralizar conteúdo, mas pode não ser necessário com line-height/text-align */
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box; /* Garante que padding não aumente o tamanho total além do esperado */
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    color: #333;
-  }
+/* CSS do Modal com Transição */
+.modal {
+  /* display: none; */ /* Substituído por opacity e visibility */
+  opacity: 0; /* Começa invisível */
+  visibility: hidden; /* Começa escondido e não interativo */
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  /* Inicia ligeiramente menor e centralizado */
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); /* Sombra um pouco mais forte */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  /* Define a transição para opacity e transform */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s linear;
+}
 
-  .modal.active {
-    display: block;
-  }
+.modal.active {
+  /* display: flex; */ /* Substituído por opacity e visibility */
+  opacity: 1; /* Torna visível */
+  visibility: visible; /* Torna visível e interativo */
+  /* Retorna ao tamanho normal */
+  transform: translate(-50%, -50%) scale(1);
+}
 
-  .modal-header {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 15px;
-  }
+/* Restante do CSS do modal (.modal-header, .modal-close, .modal-body, etc.) */
+.modal-header {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  position: relative;
+}
 
-  .modal-close {
-    text-align: right;
-    cursor: pointer;
-    font-weight: bold;
-    color: #888;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 18px;
-  }
+.modal-close {
+  cursor: pointer;
+  font-weight: bold;
+  color: #888;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  line-height: 1;
+}
 
-  .modal-close:hover {
-    color: #000;
-  }
+.modal-close:hover {
+  color: #000;
+}
 
-  .modal-body h4 {
-    font-size: 18px;
-    color: #444;
-    margin: 10px 0;
-    text-decoration: underline;
-  }
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  text-align: left;
+}
 
-  .modal-body ul {
-    list-style-type: none;
-    padding: 0;
-  }
+.modal-body h4 {
+  font-size: 18px;
+  color: #a50008;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
 
-  .modal-body li {
-    font-size: 16px;
-    margin: 5px 0;
-    padding: 5px 0;
-    border-bottom: 1px dashed #ddd;
-    color: #555;
-  }
-  p{
-    color: #000;
-    font-size: 20px;
-  }
+.modal-body h4:first-child {
+  margin-top: 0;
+}
 
-  .modal-body p {
-    font-size: 16px;
-    color: #777;
-  }
+.modal-body ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-body li {
+  font-size: 15px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ddd;
+  color: #555;
+  line-height: 1.4;
+}
+
+.modal-body li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.modal-body p {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Estilo global para 'p' fora do modal-body */
+p {
+  color: #000;
+  font-size: 20px;
+}
 
   .mensagem-manu {
     color: #333;
@@ -695,34 +769,37 @@ $totalNotificacoes = count($manutencoesProximas) + count($manutencoesVencidas);
     <?php endif; ?>
   </div>
 
-  <!-- Modal de Notificações -->
-  <div id="modal" class="modal">
-    <div class="modal-close" onclick="toggleModal()">✖</div>
-    <div class="modal-header">Notificações de Manutenção</div>
+  <div id="modal" class="modal"> <div class="modal-header">
+        Notificações de Manutenção
+        <span class="modal-close" onclick="toggleModal()">✖</span>
+    </div>
     <div class="modal-body">
-      <?php if (count($manutencoesProximas) > 0 || count($manutencoesVencidas) > 0): ?>
-        <?php if (count($manutencoesVencidas) > 0): ?>
-          <h4>Manutenções Vencidas:</h4>
-          <ul>
-            <?php foreach ($manutencoesVencidas as $manutencao): ?>
-              <li>Máquina ID: <?= htmlspecialchars($manutencao['idmaquina']) ?> - Vencida desde
-                <?= htmlspecialchars($manutencao['data_proxima_manutencao']) ?></li>
-            <?php endforeach; ?>
-          </ul>
+        <?php if (count($manutencoesProximas) > 0 || count($manutencoesVencidas) > 0): ?>
+            <?php if (count($manutencoesVencidas) > 0): ?>
+                <h4>Manutenções Vencidas:</h4>
+                <ul>
+                    <?php foreach ($manutencoesVencidas as $manutencao): ?>
+                        <li>
+                            Máquina NI: <strong><?= htmlspecialchars($manutencao['maquina_ni'] ?? $manutencao['idmaquina']) ?></strong>
+                            - Vencida desde <?= htmlspecialchars(date('d/m/Y', strtotime($manutencao['data_proxima_manutencao']))) ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+            <?php if (count($manutencoesProximas) > 0): ?>
+                <h4>Manutenções Próximas (próximos 10 dias):</h4>
+                <ul>
+                    <?php foreach ($manutencoesProximas as $manutencao): ?>
+                        <li>
+                            Máquina NI: <strong><?= htmlspecialchars($manutencao['maquina_ni'] ?? $manutencao['idmaquina']) ?></strong>
+                             - Prevista para <?= htmlspecialchars(date('d/m/Y', strtotime($manutencao['data_proxima_manutencao']))) ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        <?php else: ?>
+            <p>Nenhuma manutenção pendente ou próxima nos próximos 10 dias.</p>
         <?php endif; ?>
-
-        <?php if (count($manutencoesProximas) > 0): ?>
-          <h4>Manutenções Próximas:</h4>
-          <ul>
-            <?php foreach ($manutencoesProximas as $manutencao): ?>
-              <li>Máquina ID: <?= htmlspecialchars($manutencao['idmaquina']) ?> - Prevista para
-                <?= htmlspecialchars($manutencao['data_proxima_manutencao']) ?></li>
-            <?php endforeach; ?>
-          </ul>
-        <?php endif; ?>
-      <?php else: ?>
-        <p>Nenhuma manutenção pendente ou vencida.</p>
-      <?php endif; ?>
     </div>
   </div>
 
@@ -750,7 +827,7 @@ $totalNotificacoes = count($manutencoesProximas) + count($manutencoesVencidas);
       xhr.send();
     }
 
-    setInterval(atualizarNotificacoes, 1000); // Atualizar a cada 30 segundos
+    setInterval(atualizarNotificacoes, 30000); // Atualizar a cada 30 segundos
     document.addEventListener('DOMContentLoaded', function () {
       atualizarNotificacoes();
     });
@@ -758,15 +835,6 @@ $totalNotificacoes = count($manutencoesProximas) + count($manutencoesVencidas);
 </body>
 
 </html>
-
-<?php
-if (isset($_GET['atualizar_notificacoes'])) {
-  echo json_encode(['totalNotificacoes' => $totalNotificacoes]);
-  exit;
-}
-?>
-
-
 
 <main>
   <!-- Contêiner da imagem grande do NR12 -->
@@ -792,14 +860,6 @@ if (isset($_GET['atualizar_notificacoes'])) {
 
 
 </main>
-
-<script>
-  // Função para alternar o modal
-  function toggleModal() {
-    const modal = document.getElementById('modal');
-    modal.classList.toggle('active');
-  }
-</script>
 </body>
 
 </html>
